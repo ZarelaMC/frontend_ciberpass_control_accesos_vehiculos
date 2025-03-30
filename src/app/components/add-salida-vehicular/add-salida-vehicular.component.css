@@ -1,0 +1,219 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Previene scroll global */
+  }
+  /* Estilo para títulos con Josefin Sans */
+  .josefin-sans-title {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    margin: 2%;
+    color: #f4f4f4;
+    text-shadow: 
+      0px 4px 4px rgba(0, 0, 0, 0.25),
+      0px 2px 2px rgba(21, 57, 90, 0.7);
+  }
+  
+  .main-container {
+    display: flex;
+    height: 100vh; 
+}
+
+
+
+app-menu {
+    width: 250px; 
+    flex-shrink: 0; 
+}
+mat-toolbar {
+    background:linear-gradient(to right, #1b4c7a, #4B9DA6);
+  }
+
+.content {
+    flex-grow: 1; 
+    overflow-y: auto; 
+    background-color: #f4f4f4; 
+    margin: 1.3% 2.5% 1.3% 3.5%;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    max-width: 100%; 
+    margin: 0 auto;
+}
+.contenido_gen {
+    flex-grow: 1;
+    overflow-y: scroll; /* Habilita el scroll vertical */
+    overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+    background-color: #F4F4F4;
+    margin: 1.3% 2.5% 1.3% 3.5%;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  /* Oculta la barra de scroll pero permite el desplazamiento */
+.contenido_gen::-webkit-scrollbar {
+    display: none;
+  }
+
+  /*----------BOTONES-----------*/
+
+  ::ng-deep .boton-registrar-salida {
+    font-family: "Josefin Sans", sans-serif;
+    background: linear-gradient(45deg, #2BA555, #44C28D); /* Verde degradado */
+    color: white !important; /* Aseguramos que el color blanco prevalezca */
+    font-weight: bold;
+    padding: 12px 20px; /* Ajuste de tamaño */
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+    border: none;
+    font-size: 12px;
+     /* Añadimos sombra */
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+     0 1px 3px rgba(0.3, 0, 0, 0.5); /* Sombra ligera */
+transition: box-shadow 0.3s ease; /* Transición para efecto suave */
+}
+
+::ng-deep .boton-registrar-salida:hover {
+    background: linear-gradient(45deg, #44C28D, #2BA555);
+}
+
+.boton-registrar-salida {
+    background: linear-gradient(45deg, #2BA555, #44C28D); /* Verde degradado */
+}
+
+.mat-icon {
+    font-size: 20px; /* Tamaño del icono */
+    margin-left: 8px; /* Espacio entre el texto y el icono */
+}
+
+
+/*---*/
+/* Estilo para el botón de Registrar Incidencia con degradado rojo */
+::ng-deep .boton-registrar-incidencia {
+    font-family: "Josefin Sans", sans-serif;
+    background: linear-gradient(45deg, #FF6B6B, #FF3E3E); /* Rojo degradado */
+    color: white !important; /* Texto blanco */
+    font-weight: bold;
+    padding: 12px 20px; /* Ajuste de tamaño */
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 40px;
+    border: none;
+     /* Añadimos sombra */
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+     0 1px 3px rgba(0.3, 0, 0, 0.5); /* Sombra ligera */
+transition: box-shadow 0.3s ease; /* Transición para efecto suave */
+}
+
+::ng-deep .boton-registrar-incidencia:hover {
+    background: linear-gradient(45deg, #FF3E3E, #FF6B6B); /* Invertir degradado en hover */
+    cursor: pointer;
+}
+
+.boton-registrar-incidencia{
+    background: linear-gradient(45deg, #FF3E3E, #FF6B6B); /* Invertir degradado en hover */
+}
+
+
+/*TABLA*/
+mat-table {
+    font-family: "Josefin Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  mat-header-row, mat-row {
+    display: flex;
+  }
+  
+  .mat-header-cell, .mat-cell {
+    flex: 1; /* Ajusta proporciones entre columnas */
+  }
+  
+  
+  .mat-column-nombreCompleto {
+    flex: 0.8; /* Más grande */
+  }
+
+  .mat-column-placaVehiculo {
+    flex: 0.3; /* Más grande */
+  }
+
+  .mat-column-tipoVehiculoPermitido {
+   flex: 0.6; /* Oculta la columna si es necesario */
+  }
+  .mat-column-numIncidencias {
+    flex: 0.3; /* Oculta la columna si es necesario */
+   }
+   .mat-column-accionIncidencia {
+    flex: 1; /* Oculta la columna si es necesario */
+   }
+
+   .mat-column-fechaActualizacion {
+    flex: 1; /* Oculta la columna si es necesario */
+   }
+   .a{
+    flex: 0;
+   }
+  
+   .tabla{
+    margin-top: 5px;
+    color: #1b4c7a;
+    
+   }
+
+   ::ng-deep mat-header-cell {
+    text-align: center; /* Centra el texto horizontalmente */
+    vertical-align: middle; /* Centra el texto verticalmente */
+    justify-content: center; /* Para garantizar el centrado en flexbox */
+    display: flex; /* Necesario para usar justify-content */
+}
+
+::ng-deep mat-cell {
+    text-align: center; /* Centra el texto horizontalmente */
+    vertical-align: middle; /* Centra el texto verticalmente */
+    justify-content: center; /* Centra en contenedores flexibles */
+    display: flex; /* Necesario para justify-content */
+}
+
+::ng-deep mat-table {
+    margin: 0 auto; /* Centra la tabla en el contenedor */
+    width: 100%; /* Opcional: ajusta el ancho según sea necesario */
+    text-align: center; /* Asegura que todo el contenido esté centrado */
+}
+
+.josefin-sans-cabecera {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    margin: 2%;
+    font-size: 20px;
+    color: rgb(20, 54, 87);
+
+  }
+
+
+  /*paginacion*/
+  .mat-paginator {
+    margin-top: 10px;
+    color: #15395A; /* Cambia el color de los textos */
+  }
+  
+  .mat-paginator .mat-button-base {
+    font-family: 'Josefin Sans', sans-serif; /* Aplica tu tipografía */
+  }
+  
+  

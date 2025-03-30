@@ -1,0 +1,79 @@
+<head>
+        <!-- Enlaces necesarios para fuentes y estilos -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap">
+    </head>
+    <body>
+        <div class="main-container">
+            <mat-toolbar>
+                <span class="josefin-sans-title">DETALLE DE INCIDENCIA</span>
+            </mat-toolbar>
+            <div class="container">
+                <form id="idFormIncidencia" class="mat-dialog-content" [formGroup]="formRegistro">
+                    <div class="row" style="margin-top: 3%">
+                        <mat-form-field class="col-md-6">
+                            <mat-label>Conductor</mat-label>
+                            <input matInput maxlength="30" formControlName="validaConductor">
+                            <mat-hint *ngIf="formRegistro.controls.validaConductor.touched">
+                                <span *ngIf="formRegistro.controls.validaConductor.hasError('required')">El conductor es requerido</span>
+                            </mat-hint>
+                        </mat-form-field>
+                        <div class="form-group">
+                                <mat-form-field class="col-md-6">
+                                        <mat-label>Tipo de incidencia</mat-label>
+                                        <mat-select formControlName="validaTipoIncidencia">
+                                                <mat-option value="-1">[Seleccione]</mat-option>
+                                                <mat-option *ngFor="let x of lstTipoIncidencia" [value]="x.idTipoIncidencia">{{ x.tipo }}</mat-option>
+                                        </mat-select>
+                                        <mat-hint *ngIf="formRegistro.controls.validaTipoIncidencia.touched">
+                                                <span *ngIf="formRegistro.controls.validaTipoIncidencia.hasError('min')">Especifique el tipo de incidencia</span>
+                                        </mat-hint>
+                                </mat-form-field>
+                                <mat-form-field class="col-md-3">
+                                        <mat-label>Fecha</mat-label>
+                                        <input matInput [matDatepicker]="picker" formControlName="validaFecha">
+                                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                        <mat-hint *ngIf="formRegistro?.controls?.validaFecha?.touched">
+                                            <span *ngIf="formRegistro?.controls?.validaFecha?.hasError('required')">La fecha es obligatoria</span>
+                                            <span *ngIf="formRegistro?.controls?.validaFecha?.hasError('yearRange')">La fecha debe estar dentro del año actual</span>
+                                            <span *ngIf="formRegistro?.controls?.validaFecha?.hasError('maxDays')">Máximo 2 días anteriores a la fecha actual</span>
+                                            <span *ngIf="formRegistro?.controls?.validaFecha?.hasError('noDiasPosteriores')">Ingrese una fecha válida</span>
+                                        </mat-hint>
+                                    </mat-form-field>
+                                    <mat-form-field class="col-md-3">
+                                        <mat-label>Hora</mat-label>
+                                        <input matInput type="time" formControlName="validaHora">
+                                        <mat-hint *ngIf="formRegistro.controls.validaHora.touched">
+                                            <span *ngIf="formRegistro.controls.validaHora.hasError('required')">La hora es obligatoria</span>
+                                            <span *ngIf="formRegistro.controls.validaHora.hasError('horaInvalida')">Horario permitido de 07:00 a 23:45</span>
+                                        </mat-hint>
+                                    </mat-form-field>
+                        </div>
+                        <mat-form-field class="col-md-6">
+                            <mat-label>Comentarios</mat-label>
+                            <textarea placeholder="Agregue información relevante sobre el incidente" matInput formControlName="validaComentarios" [(ngModel)]="objIncidencia.comentario"></textarea>
+                            <mat-hint *ngIf="formRegistro.controls.validaComentarios.touched">
+                                <span *ngIf="formRegistro.controls.validaComentarios.hasError('pattern')">Ingrese caracteres válidos</span>
+                            </mat-hint>
+                        </mat-form-field>
+                        <div class="col-md-6">
+                            <input type="file" #fileInput accept="image/*" (change)="onFileSelected($event)" hidden formControlName="validaEvidencia">
+                            <button mat-raised-button class="btn-upload btnStyle" (click)="fileInput.click()">Cargar evidencia (Obligatorio)</button>
+                            <div *ngIf="imagePreview">
+                                <img [src]="imagePreview" alt="Previsualización de la imagen" style="max-width: 100%; max-height: 150px;">
+                            </div>
+                            <span *ngIf="!imagePreview" class="image-preview">Previsualización de la imagen</span>
+                        </div>
+                    </div>
+                    <div mat-dialog-actions>
+                        <button mat-raised-button type="submit" [disabled]="formRegistro.invalid" (click)="registrar()" class="btnStyle">Registrar</button>
+                        <button mat-button type="submit" color="primary" [mat-dialog-close]="1" (click)="salir()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+    

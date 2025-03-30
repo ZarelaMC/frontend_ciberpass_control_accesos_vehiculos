@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - SeguriVehículo</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<div class="main-container text-center">
+    <app-menu></app-menu>
+
+    <body>
+
+
+    <div class="welcome">
+      <h1 class="josefin-sans-title">
+        ¡BIENVENIDO A
+        <span id="brand" class="brand"><strong>SEGURIVEHICULO</strong></span>!
+      </h1>
+    </div>
+
+    <main class="main-content">
+      <!---------------CONTENEDOR-->
+
+      <div class="puntos" id="puntos"></div>
+
+
+      <!-- Objetivos del sistema -->
+      <section class="objectives">
+        <div class="objectives-grid">
+          <div class="objective-item">
+            <i class="fas fa-cogs"></i> <!-- Icono de eficiencia -->
+            <h3>Eficiencia</h3>
+            <p>Optimizar el control vehicular en tiempo real.</p>
+          </div>
+          <div class="objective-item">
+            <i class="fas fa-shield-alt"></i> <!-- Icono de seguridad -->
+            <h3>Seguridad</h3>
+            <p>Garantizar procesos seguros y confiables.</p>
+          </div>
+          <div class="objective-item">
+            <i class="fas fa-sitemap"></i> <!-- Icono de simplicidad -->
+            <h3>Simplicidad</h3>
+            <p>Facilitar el uso del sistema para cualquier agente.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Guía rápida -->
+      <section class="quick-guide">
+        <h2 >GUÍA DE USO</h2>
+        <div class="guide-grid">
+          <div class="guide-item">
+            <i class="fas fa-sign-in-alt"></i> <!-- Icono de login -->
+            <h3>Inicio de sesión</h3>
+            <p>Accede con tu cuenta y mantén tus datos seguros.</p>
+          </div>
+          <div class="guide-item">
+            <i class="fas fa-info-circle"></i> <!-- Icono de uso -->
+            <h3>Conoce el sistema</h3>
+            <p>Explora las funcionalidades y accede con facilidad.</p>
+          </div>
+          <div class="guide-item">
+            <i class="fas fa-headset"></i> <!-- Icono de ayuda -->
+            <h3>Consulta soporte</h3>
+            <p>¿Dudas? Contacta a soporte técnico fácilmente.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resumen de funcionalidades -->
+      <section class="functionalities">
+        <h2>EXPLORA LAS FUNCIONALIDADES:</h2>
+        <div class="functionality-grid">
+          <div class="functionality-item" onclick="showMessage('Registro de ingreso vehicular')">
+            <img src="assets/principal_img/parkeos.jpg" alt="Registro de ingreso">
+            <h3>Registro de ingreso vehicular</h3>
+            <p>Registra cada ingreso de manera eficiente y segura.</p>
+          </div>
+          <div class="functionality-item" onclick="showMessage('Registro de salidas')">
+            <img src="assets/principal_img/salidas.jpg" alt="Registro de salida">
+            <h3>Registro de salidas</h3>
+            <p>Lleva un control preciso de las salidas de vehículos.</p>
+          </div>
+          <div class="functionality-item" onclick="showMessage('Gestión de incidencias')">
+            <img src="assets/principal_img/incidenci.jpg" alt="Gestión de incidencias">
+            <h3>Gestión de incidencias</h3>
+            <p>Reporta y gestiona cualquier incidente fácilmente.</p>
+          </div>
+          <div class="functionality-item" onclick="showMessage('Parqueos')">
+            <img src="assets/principal_img/parkeos.jpg" alt="Parqueos">
+            <h3>Parqueos</h3>
+            <p>Accede a la vista en vivo, ubicaciones y mantenimientos.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <p>© 2024 <span>SeguriVehículo</span>. Todos los derechos reservados.</p>
+        <p>
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:soporte@segurivehiculo.com">soportesegurivehiculo.com</a>
+        </p>
+      </div>
+    </footer>
+
+    </body>
+
+
+
+
+</div>
+
+</html>

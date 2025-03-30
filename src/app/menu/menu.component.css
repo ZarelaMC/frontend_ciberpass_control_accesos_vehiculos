@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  
+}
+
+.sidebar {
+  width: 270px;
+  height: 100vh;
+  background: linear-gradient(180deg, #15395A, #2BA574);
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-radius: 0 20px 20px 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sidebar-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.profile-picture {
+  margin: 20px 0;
+}
+
+.profile-picture img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.username {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+}
+
+
+.sidebar-menu a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding: 15px 20px; /* Ajusta el padding horizontal */
+  margin: 15px 0; /* Sin margen */
+  border-radius: 0 30px 30px 0;
+  position: relative;
+  overflow: hidden;
+  width: 100%; /* Ocupa todo el ancho */
+  padding-left: 40px; /* Desplaza el texto 10px hacia la izquierda */
+
+}
+
+.sidebar-menu a:hover {
+  background-color: rgba(45, 122, 192, 0.5);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.219);
+  transition: background-color 0.3s ease;
+  padding-left: 25px; /* Añade más espacio a la izquierda en hover */
+  border-radius: 0 25px 25px 0;
+}
+
+/* Asegúrate de que no haya márgenes o rellenos adicionales en los elementos de la lista */
+.sidebar-menu li {
+  margin: 0; /* Sin margen */
+  padding: 0; /* Sin relleno */
+  
+}
+.sidebar-menu  {
+  margin: 0; /* Sin margen */
+  padding: 0; /* Sin relleno */
+  
+}
+
+.logout {
+  margin-top: auto;
+  margin-bottom: 20px;
+  width: 90%;
+  background: white;
+  color: #2BA574;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 30px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: 0.3s, transform 0.3s;
+}
+
+.logout:hover {
+  background: #e6e6e6;
+  transform: scale(1.05);
+}
+
+.imagen_menu {
+  width: 70%;
+  max-width: 300px;
+  height: auto;
+}
+
+.imagen_menu_inicio_sesion {
+  width: 70%;
+  max-width: 300px;
+  height: auto;
+}
+
+.cerrar_sesion {
+  background-color: #FFFFFF;
+  width: 80%;
+  border-radius: 0 25px 25px 0;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.418); /* Aumentar sombra al hacer hover */
+
+}
+
+.cerrar_sesion:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.603); /* Aumentar sombra al hacer hover */
+  
+}
+
+
+.cerrar_sesion a {
+  color: #2BA555;
+  border-radius: 22px;
+  font-size: 1.0rem;
+  font-weight: 700; /* Más grueso que el bold estándar */
+  padding: 10px; /* Espaciado interno */
+  display: block; /* Asegura que ocupe todo el ancho */
+  text-align: center; /* Centrar texto */
+}
+
+li {
+  padding-left: 20px;
+}
+
+li img {
+  margin-right: 8px;
+}
+
+.linea_1 {
+  height: 1px;
+  border: none;
+  background: linear-gradient(90deg, #2BA574, #1E4B5A);
+  margin: 20px 0;
+}
+
+.linea_2 {
+  height: 1px;
+  width: 100%;
+  border: none;
+  background: linear-gradient(80deg, #2ca775, #1e6360);
+  margin: 20px 0;
+}

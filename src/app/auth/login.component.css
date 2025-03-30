@@ -1,0 +1,254 @@
+/* DEFINIR COLORES DE LA PAGINA */
+:root {
+    --labelBlue: #12314E; /* Color para los textos */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh; /* Para ocupar toda la altura de la ventana */
+    position: relative; /* Para usar el contenedor de fondo correctamente */
+}
+
+/* Estilos para los círculos de fondo */
+.circle {
+    position: absolute;
+    border-radius: 0px 80% 0px 0px;
+    z-index: -1; 
+    opacity: 0.7;
+}
+
+.circle-1 {
+    width: 100ch;
+    height: 85%;
+    background: linear-gradient(560deg, #305d87, #2BA555);
+    top: 15%;
+    left: 25%;
+}
+
+.circle-2 {
+    width: 50ch; /* Disminuir el ancho para hacerlo más pequeño */
+    height: 40%; /* Ajustar la altura para que no se vea tan largo */
+    background: linear-gradient(135deg, #15395A, #2BA555);
+    border-radius: 0px 0% 0px 85%; /* Mantener este valor si quieres conservar el estilo */
+    bottom: 75%;
+    right: 0%;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--labelBlue);
+    position: relative; 
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.header .signup-btn {
+    background-color: transparent;
+    border: 1px solid #000;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.back-fondo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    background-image: url(imgs/banner_independencia.jpg);
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 55%;
+    border-radius: 0px 900ch 0px 0px;
+    overflow: hidden; 
+}
+
+.back-fondo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(21, 57, 90, 0.793); 
+    z-index: 1; 
+}
+
+.back-fondo > * {
+    position: relative;
+    z-index: 2;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 10%;
+    box-shadow: 5px 5px 2.2ch 2.2ch rgba(0, 0, 0, 0.1);
+    padding: 2em;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin-right: 10%;
+}
+
+.card-1 {
+    margin-bottom: 2em; 
+}
+
+.card-1 h1 {
+    margin-bottom: 0.5em;
+}
+
+.card-1 span {
+    color: #12314E;
+    font-size: 1.3em; /* Tamaño más grande */
+    font-weight: bold; /* Negrita */
+    text-align: left; /* Alinear a la izquierda */
+}
+
+.control {
+    width: 100%;
+    padding: 0.75em;
+    margin: 0.5em 0;
+    border: 1px solid var(#12314E); /* Borde azul */
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.card-2 {
+    margin-bottom: 1em;
+    text-align: left;
+}
+.card-2 input{
+border-radius: 10px;
+border-color: #12314E;
+}
+
+.card-2 label {
+    font-size: 0.9em;
+    color: #12314E;
+    font-weight: bold;
+}
+
+.card-3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.card-3 label {
+    display: flex;
+    align-items: center;
+}
+
+.card-3 input[type="checkbox"] {
+    margin-right: 0.5em;
+}
+
+.card-3 .forgot-password {
+    color: #757575;
+    font-size: 0.9em;
+    text-decoration: none;
+}
+
+.card-4 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.card-4 button {
+    background: linear-gradient(45deg, #305d87, #2BA555); 
+    color: #fff;
+    padding: 0.80em 5em; 
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.card-4 button:hover {
+    background: linear-gradient(45deg, #2BA555, #305d87); 
+}
+
+.card-4 button:disabled {
+    background-color: #757575; /* Fondo para el botón deshabilitado */
+    cursor: not-allowed;
+}
+
+.card-5 {
+    margin-top: 1em;
+}
+
+.card-5 span {
+    display: block;
+    margin-bottom: 1em;
+    color: #757575;
+}
+
+.social-buttons img {
+    width: 40px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.social-buttons img:hover {
+    transform: scale(1.1);
+}
+
+.fondoLogo {
+    background-image: url('imgs/logo-white.png'); 
+    background-size: 50ch;
+    background-repeat: no-repeat;
+    background-position: center; 
+    width: 100%;
+    height: 20ch; 
+    margin: 75ch 40ch 10ch 0ch;
+    position: relative; 
+}
+
+.password-container {
+    position: relative; 
+}
+
+.password-container input {
+    width: calc(100% - 40px);
+}
+
+.password-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--labelBlue);
+}
+
+.password-container i:hover {
+    color: #305d87; /* Cambia el color al pasar el mouse */
+}

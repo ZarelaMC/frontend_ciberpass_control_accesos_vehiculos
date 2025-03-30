@@ -1,0 +1,141 @@
+<head>
+  <!-- Enlaces para cargar fuentes desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="./lista-espacios.component.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap">
+
+
+
+  <!-- Carga de la fuente "Josefin Sans" -->
+  <link rel="preload" href="https://fonts.gstatic.com/s/josefinsans/v18/Qw3NZQNVED7rKGKxtqIqX5E7r3Y.ttf" as="font"
+    type="font/woff2" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <!-- Contenedor principal -->
+  <div class="main-container">
+    <!-- Menú del sistema -->
+    <app-menu></app-menu>
+
+    <!-- Área de contenido -->
+
+    <div class="contenido_gen">
+
+      <!-- Encabezado principal con barra de herramientas -->
+      <div class="row">
+        <mat-toolbar>
+          <span class="josefin-sans-title">ESPACIOS</span>
+        </mat-toolbar>
+      </div>
+
+      <!-- Botones de CRUD para Ubicación y Parqueo -->
+      <div class="row" style="margin-top: 20px; text-align: center; display: flex; justify-content: center; gap: 20px;">
+        <button class="reg_boton" mat-raised-button type="button" (click)="redirigirARegistroUbicacion()"
+          style="background-color: #2a5d75; color: antiquewhite; width: 200px;">
+          Mantener Ubicación
+        </button>
+        <button class="reg_boton" mat-raised-button type="button" (click)="redirigirARegistroParqueos()"
+          style="background-color: #60398b; color: antiquewhite; width: 200px;">
+          Mantener Parqueo
+        </button>
+      </div>
+
+      <!-- Filtros de búsqueda -->
+      <div class="row" style="margin: 3%">
+        <!-- Filtros: Tipo de Vehículo, Estado del Espacio, Tipo de Parqueo -->
+        <mat-form-field class="col-md-4">
+          <mat-label>Tipo de Vehículo</mat-label>
+          <mat-select [(ngModel)]="varTipoVehiculo">
+            <mat-option value="-1">[Todos]</mat-option>
+            <mat-option *ngFor="let t of lstTipoVehiculo"
+              [value]="t.idTipoVehiculo">{{t.nombreTipoVehiculo}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+          <mat-label>Estado del Espacio</mat-label>
+          <mat-select [(ngModel)]="varEstadoEspacio">
+            <mat-option value="-1">[Todos]</mat-option>
+            <mat-option *ngFor="let e of lstEstadoEspacios"
+              [value]="e.idEstadoEspacios">{{e.nombreEstadoEspacios}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+          <mat-label>Tipo de Parqueo</mat-label>
+          <mat-select [(ngModel)]="varTipoParqueo">
+            <mat-option value="-1">[Todos]</mat-option>
+            <mat-option *ngFor="let p of lstTipoParqueo" [value]="p.idTipoParqueo">{{p.nombreTipoParqueo}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Botón de Filtrar -->
+      <div class="row" style="margin-top: 3%; display: flex; align-items: center; justify-content: center">
+        <div style="margin-top: 15px; text-align: right;">
+          <button class="reg_boton" mat-raised-button type="button" (click)="filtrar()"
+            style="background-color: #2BA555; color: antiquewhite;">Filtrar</button>
+        </div>
+      </div>
+      <!-----------------------------------------LEYENDA-->
+
+      <div class="leyenda">
+        <p><span class="color-circle" style="background-color: #2BA555;"></span> <span>Gerencia</span></p>
+        <p><span class="color-circle" style="background-color: grey;"></span> <span>General</span></p>
+        <p><span class="color-circle" style="background-color: #15395A;"></span> <span>Discapacitado</span></p>
+      </div>
+      <!-- Leyenda de disponibilidad de espacios -->
+      <div class="leyenda">
+        <p>
+          <span class="color-circle" style="background-color: #2BA555;"></span>
+          <span class="color-circle" style="background-color: grey;"></span>
+          <span class="color-circle" style="background-color: #15395A;"></span>
+          <span>Disponible</span>
+        </p>
+        <p>
+          <span class="color-circle" style="background-color: #2BA555; opacity: 0.5;"></span>
+          <span class="color-circle" style="background-color: grey; opacity: 0.5;"></span>
+          <span class="color-circle" style="background-color: #15395A; opacity: 0.5;"></span>
+          <span>No Disponible/Inactivo</span>
+        </p>
+      </div>
+
+      <!---------------------------LISTADO--- Tabla de listado con filtro -->
+      <div class="parqueos-list">
+        <!-- Iteramos sobre las ubicaciones -->
+        <div *ngFor="let ubicacion of lstUbicaciones" class="ubicacion-group">
+          <div class="ubicacion-header">
+            <h3>{{ ubicacion.nombreUbicacion }}</h3>
+          </div>
+
+          <div class="bloques_cont" *ngIf="ubicacion.idUbicacion !== undefined">
+            <div *ngFor="let parqueo of parqueosPorUbicacion[ubicacion.idUbicacion]" class="parqueo-card">
+              <button mat-raised-button [ngStyle]="{
+                          'background-color': getColor(parqueo.tipoParqueo?.nombreTipoParqueo ?? 'defaultColor'),
+                          'color': 'white',
+                          'opacity': getEstadoOpacity(parqueo.estadoEspacios?.nombreEstadoEspacios ?? 'Disponible')
+                        }" (click)="openReadDialog(parqueo)"
+                style="display: flex; flex-direction: column; align-items: center; padding: 10px;">
+
+                <!-- Ícono de tipo de vehículo -->
+                <i class="fas fa-car fa-xs" [ngClass]="getVehiculoIcon(parqueo.tipoVehiculo?.nombreTipoVehiculo ?? '')"
+                  style="font-size: 14px; margin :3px;"></i>
+
+                <!-- Número de parqueo -->
+                <span>{{ parqueo.idParqueos }}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+</body>

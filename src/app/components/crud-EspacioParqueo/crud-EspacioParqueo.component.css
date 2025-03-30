@@ -1,0 +1,291 @@
+/* Estilos de mat toolbar */
+mat-toolbar{
+  background:linear-gradient(to right, #1b4c7a, #4B9DA6);
+
+}
+
+.josefin-sans-title,.volver-link {
+  margin: 2%;
+  color: #f4f4f4;
+  text-shadow: 
+      0px 4px 4px rgba(0, 0, 0, 0.25), /* sombra suave */
+      0px 2px 2px rgba(21, 57, 90, 0.7); /* sombra adicional personalizada */;
+}
+
+/*BOTON VOLVER*/
+.volver-link {
+  display: block;
+  margin: 1rem 3.5%; /* Alineado al margen del contenido principal */
+  color: #15395A;
+  text-decoration: none;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.volver-link:hover {
+  color: #0D47A1;
+  transform: translateX(-5px); /* Añade un pequeño movimiento para hacerlo dinámico */
+  text-decoration: underline;
+}
+
+
+/* Estilos para botones */
+.reg_boton{
+  background-color: #2BA574;
+  color: #ffffff;
+  margin: auto;
+  width: 20%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+/* Estilos para el contenedor de inputs */
+.inputContent {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  margin: 0 0 0 2ch;
+}
+
+.inputContent:nth-child(1) {
+  margin-right: 10ch;
+}
+
+/* Estilos del contenedor principal */
+.main-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Estilos para el componente de menú */
+app-menu {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+/* Estilos para el contenido principal */
+.contenido_gen {
+  flex-grow: 1;
+  overflow-y: scroll; /* Habilita el scroll vertical */
+  overflow-x: hidden; /* Oculta el desplazamiento horizontal */
+  background-color: #F4F4F4;
+  margin: 1.3% 2.5% 1.3% 3.5%;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);}
+  .contenido_gen::-webkit-scrollbar {
+    display: none;
+  }
+/* Estilos para contenedor general */
+.container {
+  flex-grow: 1;
+  overflow-y: scroll; /* Habilita el scroll vertical */
+  overflow-x: hidden; /* Oculta el*/
+    max-width: 100%;
+    margin: 0 auto;
+}
+.container::-webkit-scrollbar {
+  display: none;
+}
+.form-group{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+}
+
+/*ALERTAS DE VALIDACION*/
+form-group{
+  color: red;
+}
+
+/*-----------------------------ESPACIOS*/
+/* Contenedor principal que aloja los grupos de ubicación */
+.parqueos-list {
+  margin: 5%;
+ 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Contenedor de cada grupo de ubicación */
+.ubicacion-group {
+  flex: 0 0 calc(33.33% - 20px); /* Ocupa un tercio del ancho del contenedor */
+  padding: 15px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+
+}
+
+
+/* Encabezado de ubicación */
+.ubicacion-header {
+  margin-bottom: 10px;
+  text-align: center;
+  color: white;
+  background-color: #ffffff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Contenedor interno de parqueos--------------------------------- */
+.parqueos-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Distribución flexible */
+  gap: 10px; /* Espaciado entre las tarjetas */
+  margin-top: 1px;
+}
+
+/*-----------------------LOLLLL-------------*/
+
+
+.parqueo-card:hover {
+  transform: scale(1.1); /* Aumentar ligeramente el tamaño */
+}
+/* Oculta el ícono inicialmente */
+.edit-icon {
+  display: none;
+  color: white; /* Color blanco para el ícono */
+  font-size: 20px; /* Tamaño opcional */
+  transition: transform 0.3s ease; /* Animación opcional */
+}
+
+/* Muestra el ícono y oculta el ID al hacer hover */
+.parqueo-card:hover .edit-icon {
+  display: inline;
+}
+
+.parqueo-card:hover .parqueo-id {
+  display: none;
+}
+
+
+
+
+/* Tarjetas de parqueo */
+.parqueo-card {
+  margin: 10px;
+  transition: transform 0.3s ease; /* Animación suave para el escalado */
+  width: 45px; /* Reduce el tamaño de las tarjetas */
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 3.8%;
+}
+
+.bloques_cont{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+
+.parqueo-button {
+transition: all 0.3s ease;
+}
+
+.parqueo-button:hover {
+transform: scale(1.1); /* Agranda el botón ligeramente */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega un efecto de sombra */
+}
+
+.edit-icon {
+  transition: all 0.3s ease;
+  color: white; /* Color blanco para el ícono */
+  font-size: 18px; /* Tamaño opcional del ícono */
+  vertical-align: middle; /* Para centrar el ícono en el botón */
+}
+
+.edit-icon:hover{
+  transform: scale(1.1);
+}
+
+
+
+
+
+/* Botones dentro de las tarjetas */
+button {
+  width: 100%; /* Reduce el tamaño del botón */
+  height: 100%;
+  font-size: 0.9rem;
+  color: #333;
+  background-color: #f4f4f4;
+  
+  cursor: pointer;
+  margin: 10%px;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Encabezados de texto */
+h3 {
+  border-radius: 10px;
+  margin: 1%;
+  padding: 10px;
+  color: #15395A;
+  font-size: 20px;
+  background-color: #F4F4F4;
+}
+
+/*COLORES D EIDENTIFICACION*/
+
+.leyenda {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 5%;
+}
+.leyenda p {
+  margin: 0 15px;
+  display: inline-flex;
+  align-items: center;
+}
+.color-circle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.leyenda span {
+  vertical-align: middle;
+}
+/*----------FUENTE--------------*/
+/* Clase personalizada para Josefin Sans */
+.josefin-sans-title {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600; /* Cambia el peso según lo necesario (100-700) */
+  font-style: normal;
+}
+
+.josefin-sans-body {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Peso estándar para texto de cuerpo */
+  font-style: normal;
+}

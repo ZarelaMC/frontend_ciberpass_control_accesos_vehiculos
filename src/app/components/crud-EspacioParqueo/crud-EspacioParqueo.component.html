@@ -1,0 +1,190 @@
+<head>
+  <!-- Enlaces para cargar fuentes desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Carga de la fuente "Josefin Sans" -->
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Contenedor principal -->
+  <div class="main-container">
+    <!-- Menú del sistema -->
+    <app-menu></app-menu>
+
+    <!-- Área de contenido -->
+    <div class="container">
+      <!-- Enlace de navegación para regresar -->
+      <a (click)="redirigirAListaEspacios()" class="volver-link">> VOLVER</a>
+
+      <div class="contenido_gen">
+        <!-- Encabezado principal con barra de herramientas -->
+        <div class="row">
+          <mat-toolbar>
+            <span class="josefin-sans-title">MANTENIMIENTO DE PARQUEOS</span>
+          </mat-toolbar>
+        </div>
+
+        <!-- --------------------------------Formulario para registro de espacios de parqueo -->
+        <div class="form-container" style="margin-top: 3%;">
+
+          <form id="idFormModalidad" [formGroup]="formsRegistra">
+            <div class="form-group" style="display: flex; flex-wrap: wrap; gap: 15px;">
+              <!-- Campo de selección: Ubicación -->
+              <mat-form-field class="col-md-4">
+                <mat-label>Ubicacion:</mat-label>
+                <mat-select [(ngModel)]="objParqueo.ubicacion!.idUbicacion" formControlName="validaUbicacion">
+                  <!-- Opción "+ Nuevo" -->
+                  <mat-option value="new" (click)="redirigirARegistroUbicacion()" style="color: green;">
+                    + Nuevo
+                  </mat-option>
+                  <!-- opciones de la base de dtos -->
+                  <mat-option value="-1"> [Seleccione] </mat-option>
+                  <mat-option *ngFor="let x of lstUbicaciones" [value]="x.idUbicacion">
+                    {{x.nombreUbicacion}}
+                  </mat-option>
+                </mat-select>
+                <mat-hint style="color: red" *ngIf="formsRegistra.controls.validaUbicacion.touched">
+                  <span *ngIf="formsRegistra.controls.validaUbicacion.hasError('min')">
+                    El Ubicacion es requerido
+                  </span>
+                </mat-hint>
+              </mat-form-field>
+
+
+              <!-- Campo de selección: Tipo Parqueo -->
+              <mat-form-field class="col-md-4">
+                <mat-label>Tipo:</mat-label>
+                <mat-select [(ngModel)]="objParqueo.tipoParqueo!.idTipoParqueo" formControlName="validaTipo">
+                  <mat-option value="-1"> [Seleccione] </mat-option>
+                  <mat-option *ngFor="let x of lstTipoParqueo" [value]="x.idTipoParqueo">
+                    {{x.nombreTipoParqueo}}
+                  </mat-option>
+                </mat-select>
+                <mat-hint style="color: red" *ngIf="formsRegistra.controls.validaTipo.touched">
+                  <span *ngIf="formsRegistra.controls.validaTipo.hasError('min')">
+                    El Tipo es requerido
+                  </span>
+                </mat-hint>
+              </mat-form-field>
+
+              <!-- Campo de selección: Estado -->
+              <mat-form-field class="col-md-4">
+                <mat-label>Estado:</mat-label>
+                <mat-select [(ngModel)]="objParqueo.estadoEspacios!.idEstadoEspacios"
+                  formControlName="validaEstadoEspacios">
+                  <mat-option value="-1"> [Seleccione] </mat-option>
+                  <mat-option *ngFor="let x of lstEstadoEspacios" [value]="x.idEstadoEspacios">
+                    {{x.nombreEstadoEspacios}}
+                  </mat-option>
+                </mat-select>
+                <mat-hint style="color: red" *ngIf="formsRegistra.controls.validaTipo.touched">
+                  <span *ngIf="formsRegistra.controls.validaEstadoEspacios.hasError('min')">
+                    El Estado de Espacios es requerido
+                  </span>
+                </mat-hint>
+              </mat-form-field>
+
+
+              <!-- Campo de selección: Vehículo -->
+              <mat-form-field class="col-md-4">
+                <mat-label>Vehiculo:</mat-label>
+                <mat-select [(ngModel)]="objParqueo.tipoVehiculo!.idTipoVehiculo" formControlName="validaTipoVehiculo">
+                  <mat-option value="-1"> [Seleccione] </mat-option>
+                  <mat-option *ngFor="let x of lstTipoVehiculo" [value]="x.idTipoVehiculo">
+                    {{x.nombreTipoVehiculo}}
+                  </mat-option>
+                </mat-select>
+                <mat-hint style="color: red" *ngIf="formsRegistra.controls.validaTipoVehiculo.touched">
+                  <span *ngIf="formsRegistra.controls.validaTipoVehiculo.hasError('min')">
+                    El Vehiculo es requerido
+                  </span>
+                </mat-hint>
+              </mat-form-field>
+            </div>
+
+            <!-- Botón para enviar el formulario -->
+            <div style="margin-top: 15px; text-align: right;">
+              <button class="reg_boton" mat-raised-button type="submit" [disabled]="formsRegistra.invalid"
+                (click)="registra()" style="background-color: #2BA555;color: antiquewhite;">Registra</button>
+            </div>
+          </form>
+        </div>
+
+
+        <!--<button><a href="verCrudUbicacion">Espacio de Parqueo</a></button>-->
+        <!-----------------------------------------LEYENDA-->
+
+        <div class="leyenda">
+          <p><span class="color-circle" style="background-color: #2BA555;"></span> <span>Gerencia</span></p>
+          <p><span class="color-circle" style="background-color: grey;"></span> <span>General</span></p>
+          <p><span class="color-circle" style="background-color: #15395A;"></span> <span>Discapacitado</span></p>
+        </div>
+
+        <!-----------------------------------------LEYENDA DISPONIBLE/NO DISPONIBLE-->
+
+        <div class="leyenda">
+          <!-- Leyenda de Disponible -->
+          <p>
+            <span class="color-circle" style="background-color: #2BA555;"></span>
+            <span class="color-circle" style="background-color: grey;"></span>
+            <span class="color-circle" style="background-color: #15395A;"></span>
+            <span>Disponible</span>
+          </p>
+
+          <!-- Leyenda de No Disponible/Inactivo -->
+          <p>
+            <span class="color-circle" style="background-color: #2BA555; opacity: 0.5;"></span>
+            <span class="color-circle" style="background-color: grey; opacity: 0.5;"></span>
+            <span class="color-circle" style="background-color: #15395A; opacity: 0.5;"></span>
+            <span>No Disponible/Inactivo</span>
+          </p>
+        </div>
+
+
+        <!---------------------------LISTADO--- Tabla de listado con filtro -->
+        <div class="parqueos-list">
+          <!-- Iteramos sobre las ubicaciones -->
+          <div *ngFor="let ubicacion of lstUbicaciones" class="ubicacion-group">
+            <div class="ubicacion-header">
+              <h3>{{ ubicacion.nombreUbicacion }}</h3>
+            </div>
+
+            <div class="bloques_cont" *ngIf="ubicacion.idUbicacion !== undefined">
+              <div *ngFor="let parqueo of parqueosPorUbicacion[ubicacion.idUbicacion]" class="parqueo-card">
+                <button 
+                  mat-raised-button 
+                  [ngStyle]="{
+                    'background-color': getColor(parqueo.tipoParqueo?.nombreTipoParqueo ?? 'defaultColor'),
+                    'color': 'white',
+                    'opacity': getEstadoOpacity(parqueo.estadoEspacios?.nombreEstadoEspacios ?? 'Disponible')
+                  }" 
+                  (click)="openUpdateDialog(parqueo)" 
+                  style="display: flex; flex-direction: column; align-items: center; padding: 10px;">
+            
+                  <!-- Ícono de tipo de vehículo -->
+                  <i 
+                    class="fas fa-car fa-xs" 
+                    [ngClass]="getVehiculoIcon(parqueo.tipoVehiculo?.nombreTipoVehiculo ?? '')"
+                    style="font-size: 14px; margin: 3px;">
+                  </i>
+            
+                  <!-- Número de parqueo -->
+                  <span>{{ parqueo.idParqueos }}</span>
+                </button>
+              </div>
+            </div>
+            
+          </div>
+
+        </div>
+
+        <!-- ------------------------------Fin listado -->
+
+      </div>
+    </div>
+  </div>
+</body>

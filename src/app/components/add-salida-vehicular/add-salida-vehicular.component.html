@@ -1,0 +1,78 @@
+<head>
+    <!-- Enlaces para cargar fuentes desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./add-salida-vehicular.component.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap">
+
+</head>
+
+<body>
+
+
+    <div class="main-container">
+        <app-menu></app-menu>
+
+        <div class="contenido_gen">
+            <mat-toolbar>
+                <span class="josefin-sans-title">SALIDAS VEHICULARES</span>
+
+            </mat-toolbar>
+            <!-- Tabla de Accesos Vehiculares -->
+            <mat-table #table class="mat-cell" class="tabla" [dataSource]="dataSource">
+                <ng-container matColumnDef="nombreCompleto">
+                    <mat-header-cell *matHeaderCellDef mat-header-cell class="josefin-sans-cabecera"> Conductor </mat-header-cell>
+                    <mat-cell *matCellDef="let acceso">{{ acceso.nombreCompleto }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="tipoVehiculoPermitido">
+                    <mat-header-cell *matHeaderCellDef mat-header-cell class="josefin-sans-cabecera"> Vehículo </mat-header-cell>
+                    <mat-cell *matCellDef="let acceso">{{ acceso.tipoVehiculoPermitido }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="placaVehiculo">
+                    <mat-header-cell *matHeaderCellDef mat-header-cell class="josefin-sans-cabecera"> Placa </mat-header-cell>
+                    <mat-cell *matCellDef="let acceso">{{ acceso.placaVehiculo }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="fechaRegistro">
+                    <mat-header-cell *matHeaderCellDef mat-header-cell class="josefin-sans-cabecera"> Entrada </mat-header-cell>
+                    <mat-cell *matCellDef="let acceso">
+                        {{ acceso.fechaRegistro | date: 'yyyy/MM/dd HH:mm' }}
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="fechaActualizacion">
+                    <mat-header-cell *matHeaderCellDef class="josefin-sans-cabecera"> Salida </mat-header-cell>
+                    <mat-cell *matCellDef="let acceso">
+                        <ng-container *ngIf="acceso.fechaActualizacion; else registrarSalidaBtn">
+                            {{ acceso.fechaActualizacion | date: 'yyyy/MM/dd HH:mm' }}
+                        </ng-container>
+                        <ng-template #registrarSalidaBtn>
+                            <button class="boton-registrar-salida"
+                                (click)="registrarSalida(acceso.idAccesoVehicular)">
+                                <mat-icon style="margin: 0;">flash_on</mat-icon>
+                                Marcar Salida
+                            </button>
+                        </ng-template>
+                    </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="numIncidencias">
+                    <mat-header-cell class="josefin-sans-cabecera" *matHeaderCellDef mat-header-cell > Total </mat-header-cell>
+                    <mat-cell *matCellDef="let acceso">{{ acceso.totalIncidencias }}</mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="accionIncidencia">
+                    <mat-header-cell  *matHeaderCellDef class="josefin-sans-cabecera"> Incidencias </mat-header-cell>
+                    <mat-cell *matCellDef="let acceso">
+                        <button class="josefin-sans-cabecera" class="boton-registrar-incidencia"
+                        (click)="openRegistroDialog(acceso.idCliente , acceso.nombreCompleto, acceso.fechaActualizacion)">
+                        <mat-icon style="margin: 0;">flash_on</mat-icon>
+                        Agregar </button>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let acceso; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+
+    </div>
+</body>

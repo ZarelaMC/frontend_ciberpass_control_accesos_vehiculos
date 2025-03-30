@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+            <style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; 
+}
+
+.sidebar {
+    width: 250px; 
+    height: calc(100vh - 20px); 
+    background: linear-gradient(180deg, #15395A, #2BA555); 
+    position: fixed; 
+    top: 10px; 
+
+    left: 0;
+    border-radius: 0px 20px 0px 0px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.profile-picture {
+    margin-bottom: 10px;
+}
+
+.profile-picture img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.username {
+    margin: 10px 0; 
+    font-size: 1.2em; 
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 10px; 
+}
+
+.sidebar-menu li {
+    margin: 10px 0; 
+
+    font-weight: bold;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: #333; 
+    display: block; 
+    padding: 10px; 
+    transition: background 0.3s; 
+}
+
+.sidebar-menu a:hover {
+  border-radius: 0px 30px 30px 0px;
+    background: #f0f0f0; 
+     background: linear-gradient(270deg, #2D7AC0, #2ba55600);
+}
+
+
+</style>
+        </head>
+        <body>
+            
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sidebar con Degradado Vertical</title>
+
+
+
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>Img cibertec</h2>
+            <br>
+            <div class="profile-picture">
+                <img src="https://via.placeholder.com/100" alt="Foto de perfil">
+            </div>
+            <h2 class="username">Nombre de Usuario</h2>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="#">Ingresos</a></li>
+            <li><a href="#">Salidas</a></li>
+            <li><a href="#">Espacios de Parqueo</a></li>
+            <li><a href="#">Incidencias</a></li>
+            <li><a href="#">Cerrar sesion</a></li>
+        </ul>
+    </div>
+
+
+
+
+            <script>// Write JavaScript here</script>
+        
+    
+</body>

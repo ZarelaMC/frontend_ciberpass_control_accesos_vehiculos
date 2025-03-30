@@ -1,0 +1,65 @@
+.main-container {
+  max-width: 800px; /* Máximo ancho del modal */
+  margin: 0 auto; /* Centra el modal horizontalmente */
+  background-color: #fff; /* Color de fondo */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra para efecto de profundidad */
+  overflow: hidden; /* Evita desbordamientos */
+}
+
+/* Estilo para títulos con Josefin Sans */
+.josefin-sans-title {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  margin: 2%;
+  color: #f4f4f4;
+  text-shadow: 
+    0px 4px 4px rgba(0, 0, 0, 0.25),
+    0px 2px 2px rgba(21, 57, 90, 0.7);
+}
+
+mat-toolbar {
+  background: linear-gradient(to right, #1b4c7a, #4B9DA6);
+}
+
+.container {
+  max-width: 100%; 
+  margin: 0 auto;
+}
+
+.btnStyle {
+  background: linear-gradient(45deg, #305d87, #2BA555); 
+  color: #fff;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  margin: 2.5ch 1ch;
+  max-width: 100px;
+}
+
+/*________________ Carga de imágenes ________________*/
+.btn-upload {
+  width: 100%;
+  max-width: 300px;
+}
+.image-preview {
+  width: 100%;
+  max-width: 300px;
+  height: 150px;
+  border: 2px dashed #0a3a61;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a3a61;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .main-container {
+      width: 90%; /* Más ancho en pantallas pequeñas */
+      max-width: none; /* Sin límite de ancho máximo */
+  }
+}
+

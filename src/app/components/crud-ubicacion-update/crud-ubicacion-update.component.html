@@ -1,0 +1,88 @@
+<div class="container">
+    <form id="idFormUbicacion" [formGroup]="formsActualiza">
+        <div class="mat-dialog-content">
+            <div class="row">
+                <mat-toolbar color="primary"> 
+                    <span>Actualizar Ubicación</span>
+                </mat-toolbar>
+            </div>
+
+            <!-- Nombre de Ubicación -->
+            <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
+                <mat-form-field class="col-md-4">
+                    <mat-label>Ubicación</mat-label>
+                    <input matInput formControlName="validaNombreUbicacion">
+                    <mat-hint style="color: red" *ngIf="formsActualiza.controls.validaNombreUbicacion.touched">
+                      <span *ngIf="formsActualiza.controls.validaNombreUbicacion.hasError('required')">
+                        El nombre es requerido
+                      </span>
+                      <span *ngIf="formsActualiza.controls.validaNombreUbicacion.hasError('pattern')">
+                        Los nombres son de 4 a 40 carácteres y sin espacios al inicio o al final
+                      </span>
+                    </mat-hint>
+                  </mat-form-field>
+                  
+
+                <!-- Tipo de Ubicación -->
+                <mat-form-field class="col-md-4">
+                    <mat-label>Tipo de Ubicación</mat-label>
+                    <mat-select [(ngModel)]="objUbicacion.tipoUbicacion!.idTipoUbicacion" formControlName="validaTipoUbicacion">
+                        <mat-option value="-1">[Seleccione]</mat-option>
+                        <mat-option *ngFor="let x of lstTipoUbicacion" [value]="x.idTipoUbicacion">
+                            {{x.nombreTipoUbicacion}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint style="color: red" *ngIf="formsActualiza.controls.validaTipoUbicacion.touched">
+                        <span *ngIf="formsActualiza.controls.validaTipoUbicacion.hasError('min')">
+                            El tipo de ubicación es requerido
+                        </span>
+                    </mat-hint>
+                </mat-form-field>
+
+                <!-- Límite de Parqueos -->
+                <mat-form-field class="col-md-4">
+                    <mat-label>Límite de Parqueos</mat-label>
+                    <input matInput [(ngModel)]="objUbicacion.limiteParqueos" formControlName="validaLimiteParqueos" type="number" min="1" max="300">
+                    <mat-hint style="color: red" *ngIf="formsActualiza.controls.validaLimiteParqueos.touched">
+                        <span *ngIf="formsActualiza.controls.validaLimiteParqueos.hasError('min')">
+                            El límite debe ser al menos 1
+                        </span>
+                        <span *ngIf="formsActualiza.controls.validaLimiteParqueos.hasError('max')">
+                            El límite no puede ser mayor a 300
+                        </span>
+                    </mat-hint>
+                </mat-form-field>
+
+                <!-- Estado -->
+                <mat-form-field class="col-md-4">
+                    <mat-label>Estado</mat-label>
+                    <mat-select [(ngModel)]="objUbicacion.estadoEspacios!.idEstadoEspacios" formControlName="validaEstadoEspacios">
+                        <mat-option value="-1">[Seleccione]</mat-option>
+                        <mat-option *ngFor="let x of lstEstadoEspacios" [value]="x.idEstadoEspacios">
+                            {{x.nombreEstadoEspacios}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-hint style="color: red" *ngIf="formsActualiza.controls.validaEstadoEspacios.touched">
+                        <span *ngIf="formsActualiza.controls.validaEstadoEspacios.hasError('min')">
+                            El estado es requerido
+                        </span>
+                    </mat-hint>
+                </mat-form-field>
+            </div>
+
+            <!-- Botones -->
+            <div mat-dialog-actions>
+                <button mat-raised-button type="submit" color="primary" [mat-dialog-close]="1" 
+                    [disabled]="formsActualiza.invalid" (click)="actualizar()">
+                    Actualizar
+                </button>
+                <button mat-button color="primary" (click)="cancelar()">Cancelar</button>
+
+                <button mat-icon-button color="accent" (click)="elimina(objUbicacion)">
+                    <mat-icon aria-label="Delete">delete</mat-icon>
+                  </button>
+                  
+            </div>
+        </div>
+    </form>
+</div>

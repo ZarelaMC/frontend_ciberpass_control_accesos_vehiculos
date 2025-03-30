@@ -1,0 +1,76 @@
+<div class="container">
+  <form id="idFormParqueo" [formGroup]="formsActualiza">
+    <div class="mat-dialog-content">
+      <div class="row">
+        <mat-toolbar color="primary">
+          <span>Actualizar Parqueo</span>
+        </mat-toolbar>
+      </div>
+
+      <!-- Ubicación -->
+      <div class="row" style="margin-top: 3%; margin-bottom: 3%;">
+        <mat-form-field class="col-md-4">
+          <mat-label>Ubicación</mat-label>
+          <mat-select [(ngModel)]="objParqueo.ubicacion!.idUbicacion" formControlName="validaUbicacion">
+            <mat-option value="-1">[Seleccione]</mat-option>
+            <mat-option *ngFor="let x of lstUbicaciones" [value]="x.idUbicacion">
+              {{x.nombreUbicacion}}
+            </mat-option>
+          </mat-select>
+          <mat-hint style="color: red" *ngIf="formsActualiza.controls.validaUbicacion.touched">
+            <span *ngIf="formsActualiza.controls.validaUbicacion.hasError('min')">
+              La ubicación es requerida
+            </span>
+          </mat-hint>
+        </mat-form-field>
+
+        <!-- Tipo de Parqueo -->
+        <mat-form-field class="col-md-4">
+          <mat-label>Tipo de Parqueo</mat-label>
+          <mat-select [(ngModel)]="objParqueo.tipoParqueo!.idTipoParqueo" formControlName="validaTipo">
+            <mat-option value="-1">[Seleccione]</mat-option>
+            <mat-option *ngFor="let x of lstTipoParqueo" [value]="x.idTipoParqueo">
+              {{x.nombreTipoParqueo}}
+            </mat-option>
+          </mat-select>
+          <mat-hint style="color: red" *ngIf="formsActualiza.controls.validaTipo.touched">
+            <span *ngIf="formsActualiza.controls.validaTipo.hasError('min')">
+              El tipo de parqueo es requerido
+            </span>
+          </mat-hint>
+        </mat-form-field>
+
+        <!-- Estado del Parqueo -->
+        <mat-form-field class="col-md-4">
+          <mat-label>Estado</mat-label>
+          <mat-select [(ngModel)]="objParqueo.estadoEspacios!.idEstadoEspacios" formControlName="validaEstadoEspacios">
+            <mat-option value="-1">[Seleccione]</mat-option>
+            <mat-option *ngFor="let x of lstEstadoEspacios" [value]="x.idEstadoEspacios">
+              {{x.nombreEstadoEspacios}}
+            </mat-option>
+          </mat-select>
+          <mat-hint style="color: red" *ngIf="formsActualiza.controls.validaEstadoEspacios.touched">
+            <span *ngIf="formsActualiza.controls.validaEstadoEspacios.hasError('min')">
+              El estado es requerido
+            </span>
+          </mat-hint>
+        </mat-form-field>
+      </div>
+
+      <!-- Botones -->
+      <div mat-dialog-actions>
+        <button mat-raised-button type="submit" color="primary" [mat-dialog-close]="1"
+          [disabled]="formsActualiza.invalid" (click)="actualizar()">
+          Actualizar
+        </button>
+        <button mat-button color="primary" (click)="cancelar()">Cancelar</button>
+      
+        <button mat-icon-button color="accent" (click)="elimina(objParqueo)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+        
+      </div>
+
+    </div>
+  </form>
+</div>

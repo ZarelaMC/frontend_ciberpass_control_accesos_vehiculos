@@ -1,0 +1,110 @@
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100..700&display=swap" rel="stylesheet">
+
+  <style>
+      /* Aquí va el CSS mencionado anteriormente */
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <app-menu></app-menu>
+
+    <div class="content">
+      <div class="contenido_gen">
+        <div class="row">
+          <mat-toolbar
+              style="background:#4B9DA6; border-radius: 20px 20px 20px 20px; padding-left: 5%;">
+              <!--<a href="#" class="volver-link"> ></a>-->
+              <h1>Incidencias</h1>
+          </mat-toolbar>
+        </div>
+
+        <div class="inputContent">
+          <form [formGroup]="formFiltrarClientes">
+            <div class="row" style="margin-top: 1%">
+              <mat-form-field class="col-md-3">
+                <mat-label>Nombre</mat-label>
+                <input matInput [(ngModel)]="varNombres" maxlength="25" formControlName="nombre">
+                <mat-hint style="color: red" *ngIf="formFiltrarClientes.controls.nombre.touched">
+                    <span *ngIf="formFiltrarClientes.controls.nombre.hasError('pattern')">
+                        Ingrese sólo letras
+                    </span>
+                </mat-hint>
+              </mat-form-field>
+              <mat-form-field class="col-md-3">
+                <mat-label>Apellido</mat-label>
+                <input matInput [(ngModel)]="varApellidos" maxlength="25" formControlName="apellido">
+                <mat-hint style="color: red" *ngIf="formFiltrarClientes.controls.apellido.touched">
+                  <span *ngIf="formFiltrarClientes.controls.apellido.hasError('pattern')">
+                      Ingrese sólo letras
+                  </span>
+              </mat-hint>
+              </mat-form-field>
+              <mat-form-field class="col-md-2">
+                <mat-label>Num. identificador</mat-label>
+                <input matInput [(ngModel)]="varIdentificador" maxlength="12" formControlName="identificador">
+                <mat-hint style="color: red" *ngIf="formFiltrarClientes.controls.identificador.touched">
+                  <span *ngIf="formFiltrarClientes.controls.identificador.hasError('pattern')">
+                      Ingrese una identificación válida
+                  </span>
+              </mat-hint>
+              </mat-form-field>
+              <div class="col-md-2" >
+                <button mat-raised-button color="primary" class="reg_boton" (click)="filtrar()">Filtrar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        
+          <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8" >
+            <ng-container matColumnDef="idCliente">
+              <mat-header-cell *matHeaderCellDef>Código del cliente</mat-header-cell>
+              <mat-cell *matCellDef="let aux">{{ aux.idCliente }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="nombres">
+              <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+              <mat-cell *matCellDef="let aux">{{ aux.nombres }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="apellidos">
+              <mat-header-cell *matHeaderCellDef>Apellido</mat-header-cell>
+              <mat-cell *matCellDef="let aux">{{ aux.apellidos }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="identificador">
+              <mat-header-cell *matHeaderCellDef>DNI/CE</mat-header-cell>
+              <mat-cell *matCellDef="let aux">{{ aux.identificador }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="telefono">
+              <mat-header-cell *matHeaderCellDef>Teléfono</mat-header-cell>
+              <mat-cell *matCellDef="let aux">{{ aux.telefono }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="numIncidencias">
+              <mat-header-cell *matHeaderCellDef>Incidencias</mat-header-cell>
+              <mat-cell *matCellDef="let aux">{{ aux.numIncidencias }}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="exportar">
+              <mat-header-cell *matHeaderCellDef>Generar informe</mat-header-cell>
+              <mat-cell *matCellDef="let aux">
+                <button mat-raised-button color="accent" class="exportar" (click)="generarInformePDF(aux)" [disabled]="aux.numIncidencias < 5">PDF</button>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+          <mat-paginator [pageSizeOptions]="[6,8,10]" showFirstLastButtons></mat-paginator>
+        
+
+      </div>
+    </div>
+  </div>
+</body>

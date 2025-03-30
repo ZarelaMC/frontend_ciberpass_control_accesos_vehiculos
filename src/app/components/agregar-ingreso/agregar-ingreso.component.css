@@ -1,0 +1,425 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Previene scroll global */
+}
+/* Estilo para títulos con Josefin Sans */
+.josefin-sans-title {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  margin: 2%;
+  margin-bottom: 1.5%;
+  margin-left: 1%;
+  color: #f4f4f4;
+  text-shadow: 
+    0px 4px 4px rgba(0, 0, 0, 0.25),
+    0px 2px 2px rgba(21, 57, 90, 0.7);
+}
+.inputContent{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 0 0 2ch;
+}
+
+.inputContent:nth-child(1){
+    margin-right: 10ch;
+}
+
+.main-container {
+    display: flex;
+    height: 100vh; 
+   
+}
+
+app-menu {
+    width: 250px; 
+    flex-shrink: 0; 
+}
+
+/* Estilos de mat-toolbar */
+mat-toolbar {
+  background-color: #15395A;
+}
+
+.content {
+    flex-grow: 1; 
+    overflow-y: auto; 
+    background-color: #ffffff; 
+    
+    margin: 1.3% 2.5% 1.3% 3.5%;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    max-width: 100%; 
+    margin: 0 auto;
+    
+}
+
+.btnEnd{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnEnd button{
+    background: linear-gradient(45deg, #305d87, #2BA555); 
+    color: #fff;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    margin: 2.5ch 1ch;
+}
+
+
+.inputContent{
+    margin-top: 1.5ch;
+    margin-bottom: 1.5ch;
+}
+
+.parking-layout {
+    display: flex;
+    margin-top: 3ch;
+    margin: auto;
+  }
+  
+  .parking-section {
+    width: auto;
+    height: 30ch;
+    margin: auto;
+    margin-right: 2ch;
+    padding: 10px;
+    background-color: #D9DBDC;
+    border-radius: 10%;
+
+    }
+  
+    .parking-section  h5{
+        background-color: #fff;
+        color: black;
+        font-size: 18px;
+        padding: 2%;
+        border-radius: 1ch 1ch 1ch 1ch;
+        text-align: center;
+    }
+
+  .parking-spaces {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 8 columnas para los espacios */
+    grid-gap: 15px;
+  }
+  
+  .parking-spaces button {
+    width: 5ch;
+    height: 5ch;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  
+  .parking-spaces button.selected {
+    background-color: #2BA574; /* Indica espacio seleccionado */
+  }
+  .parking-spaces button:hover {
+    background-color: #2BA555; /* Indica espacio seleccionado */
+  }
+  .parking-spaces button.d {
+    background-color: #fbff04;
+  }
+
+  .parking-spaces button.gt {
+    background-color: #4d01fd;
+  }
+  
+  .parking-spaces button.disabled {
+    background-color: gray; /* Espacio ocupado */
+    cursor: not-allowed;
+  }
+  
+
+
+.leyenda {
+  margin: 2% 10%;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leyenda-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+
+.color-general {
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff; 
+  border-radius: 50%; 
+  margin-right: 10px;
+  border: 1px solid #333; 
+}
+
+.color-discapacitado {
+  width: 20px;
+  height: 20px;
+  background-color: #fbff04; 
+  border-radius: 50%; 
+  margin-right: 10px;
+}
+
+.color-gerencia {
+  width: 20px;
+  height: 20px;
+  background-color:  #4d01fd; 
+  border-radius: 50%; 
+  margin-right: 10px;
+}
+
+
+h6 {
+  margin: 0;
+  font-size: 1.1em;
+  color: #333; 
+}
+
+.section-header {
+  background:  #f6f7f6; 
+  padding: 2.5% 10%;
+  border-radius: 20px;
+  margin-bottom: 3%;
+  text-align: center;
+}
+
+.section-vehiculo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.section-propietario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.contenedor_espacios{
+  display: flex;
+  margin: auto;
+}
+
+.seleccionInicial{
+  margin: 1ch 2ch 1ch 1ch;
+}
+
+
+
+
+
+/*-----------------------------ESPACIOS*/
+/* Contenedor principal que aloja los grupos de ubicación */
+
+/* Contenedor de cada grupo de ubicación */
+.ubicacion-group {
+  flex: 0 0 calc(33.33% - 20px); /* Ocupa un tercio del ancho del contenedor */
+  padding: 15px;
+  border: 1px solid #ffffff;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+/* Contenedor interno de parqueos--------------------------------- */
+.parqueos-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Distribución flexible */
+  gap: 10px; /* Espaciado entre las tarjetas */
+  margin-top: 1px;
+}
+
+  /*ALERTAS DE VALIDACION*/
+  form-group{
+    color: red;
+  }
+
+
+
+
+/* Encabezado de ubicación */
+.ubicacion-header i {
+  margin-left: 8px; 
+  transition: transform 0.3s ease; /* Transición suave */
+  scale: 8px;
+  
+}
+.ubicacion-header {
+  
+  margin-bottom: 10px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  padding: 5px;
+  border-radius: 5px;
+  
+}
+
+
+
+  /*--------PARQUEOS------------*/
+/* Lista de parqueos */
+.parqueos-list {
+  margin: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+
+
+/* Tarjetas de parqueo--------------------colores tipos */
+
+
+.parqueo-card {
+  margin: 10px;
+  transition: transform 0.3s ease; /* Animación suave para el escalado */
+  width: 45px; /* Reduce el tamaño de las tarjetas */
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f4f4;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+.parqueo-button {
+  width: 60px; /* Ajusta según tu espacio disponible */
+  height: 80px; /* Ajusta según tu espacio disponible */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px; /* Ajusta el tamaño del texto */
+}
+
+.leyenda {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 5%;
+}
+.leyenda p {
+  margin: 0 15px;
+  display: inline-flex;
+  align-items: center;
+}
+.color-circle {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.leyenda span {
+  vertical-align: middle;
+}
+
+
+/* Encabezados (h3) */
+h3 {
+  border-radius: 10px;
+  margin: 1%;
+  padding: 10px;
+  color: #15395A;
+  font-size: 20px;
+  background-color: #F4F4F4;
+}
+.bloques_cont{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.parqueos-list button {
+  width: 100%;
+  height: 100%;
+  font-size: 0.9rem;
+  color: #333;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  margin: 10%px;
+}
+.parqueo-button {
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #e0e0e0;
+}
+.josefin-sans-body {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* Peso estándar para texto de cuerpo */
+  font-style: normal;
+}
+
+/* NAGULAR MATERIAL EDIT */
+/* Estilo de los pasos no seleccionados */
+::ng-deep .mat-step-header {
+  background-color: #ffffff ; /* Fondo blanco para los pasos no seleccionados */
+ 
+  border-radius: 50px 50px 0 0 !important;
+  color: #1b4c7a !important; /* Color del texto */
+}
+
+/* Cambia el color de la bolita */
+::ng-deep .mat-step-header .mat-step-icon {
+  background-color: #37ac68 !important; /* Color de la bolita */
+  color: white !important; /* Color del ícono */
+}
+
+/* Cambia el color y agrega bordes redondeados cuando el paso está seleccionado */
+::ng-deep .mat-step-header.mat-step-header-selected {
+  background-color: #356fa5 !important; /* Fondo azul para el paso seleccionado */
+  border-radius: 50% !important; /* Redondear la bolita del paso seleccionado */
+  box-shadow: 0 0 10px rgba(53, 111, 165, 0.6); /* Sombra opcional */
+}
+
+/* Cambiar el color de la bolita cuando el paso está seleccionado */
+::ng-deep .mat-step-header.mat-step-header-selected .mat-step-icon {
+  background-color: #356fa5 !important; /* Cambia el color de la bolita al ser seleccionado */
+}
+
+/* Estilo del contenedor del paso horizontal */
+::ng-deep .mat-horizontal-stepper-header-container {
+  background-color: #ffffff !important; /* Fondo del cuadro */
+  border-radius: 8px; /* Redondear esquinas */
+}
+
+/* Cambia la tipografía y color del texto de las etiquetas */
+::ng-deep .mat-step-label {
+  font-family: 'Josefin Sans', sans-serif; /* Fuente */
+  font-size: 1.2rem; /* Tamaño */
+  color: #1b4c7a !important; /* Color del texto */
+}
+

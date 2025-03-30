@@ -1,0 +1,193 @@
+<head>
+  <!-- Enlaces para cargar fuentes desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Carga de la fuente "Josefin Sans" -->
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <!-- Contenedor principal -->
+  <div class="main-container">
+    <!-- Menú del sistema -->
+    <app-menu></app-menu>
+
+    <!-- Área de contenido -->
+    <div class="container">
+      <!-- Enlace de navegación para regresar -->
+      <a (click)="redirigirAListaEspacios()" class="volver-link">> VOLVER</a>
+
+      <div class="contenido_gen">
+        <!-- Encabezado principal con barra de herramientas -->
+        <div class="row">
+          <mat-toolbar>
+            <span class="josefin-sans-title">MANTENIMIENTO DE UBICACIONES</span>
+          </mat-toolbar>
+        </div>
+
+        <!-- ----------------------------Formulario para registro de ubicaciones -->
+        <div class="form-container" style="margin-top: 3%;">
+          <form id="idFormUbicacion" [formGroup]="formsRegistra">
+            <div class="form-group" style="display: flex; flex-wrap: wrap; gap: 15px;">
+              <!-- Campo de selección: Nombre Ubicación -->
+              <mat-form-field class="col-md-4">
+                <mat-label>Ubicación:</mat-label>
+                <input matInput [(ngModel)]="objUbicacion.nombreUbicacion" formControlName="validaNombreUbicacion">
+                <mat-hint style="color: red" *ngIf="formsRegistra.controls.validaNombreUbicacion.touched">
+                  <span *ngIf="formsRegistra.controls.validaNombreUbicacion.hasError('required')">
+                    El nombre es requerido
+                  </span>
+                  <span *ngIf="formsRegistra.controls.validaNombreUbicacion.hasError('pattern')">
+                    El nombre es de 3 a 30 caracteres
+                  </span>
+                </mat-hint>
+              </mat-form-field>
+
+              <!-- Campo de selección: Tipo Ubicacion -->
+              <mat-form-field class="col-md-4">
+                <mat-label>Tipo:</mat-label>
+                <mat-select [(ngModel)]="objUbicacion.tipoUbicacion!.idTipoUbicacion"
+                  formControlName="validaTipoUbicacion">
+                  <mat-option value="-1"> [Seleccione] </mat-option>
+                  <mat-option *ngFor="let x of lstTipoUbicacion" [value]="x.idTipoUbicacion">
+                    {{x.nombreTipoUbicacion}}
+                  </mat-option>
+                </mat-select>
+                <mat-hint style="color: red" *ngIf="formsRegistra.controls.validaTipoUbicacion.touched">
+                  <span *ngIf="formsRegistra.controls.validaTipoUbicacion.hasError('min')">
+                    El Tipo es requerido
+                  </span>
+                </mat-hint>
+              </mat-form-field>
+
+              <!-- Campo de selección: Limite -->
+              <mat-form-field class="col-md-4">
+                <mat-label>Límite:</mat-label>
+                <input matInput [(ngModel)]="objUbicacion.limiteParqueos" formControlName="validaLimiteParqueos"
+                  type="number" min="1" max="300" required>
+                <mat-hint style="color: red" *ngIf="formsRegistra.controls.validaLimiteParqueos.touched">
+                  <span *ngIf="formsRegistra.controls.validaLimiteParqueos.hasError('required')">
+                    El Límite es requerido
+                  </span>
+                  <span *ngIf="formsRegistra.controls.validaLimiteParqueos.hasError('min')">
+                    El límite debe ser al menos 1
+                  </span>
+                  <span *ngIf="formsRegistra.controls.validaLimiteParqueos.hasError('max')">
+                    El límite no puede ser mayor a 300
+                  </span>
+                </mat-hint>
+              </mat-form-field>
+              <!-- Campo de selección: Estado -->
+              <mat-form-field class="col-md-4">
+                <mat-label>Estado:</mat-label>
+                <mat-select [(ngModel)]="objUbicacion.estadoEspacios!.idEstadoEspacios"
+                  formControlName="validaEstadoEspacios">
+                  <mat-option value="-1"> [Seleccione] </mat-option>
+                  <mat-option *ngFor="let x of lstEstadoEspacios" [value]="x.idEstadoEspacios">
+                    {{x.nombreEstadoEspacios}}
+                  </mat-option>
+                </mat-select>
+                <mat-hint style="color: red" *ngIf="formsRegistra.controls.validaEstadoEspacios.touched">
+                  <span *ngIf="formsRegistra.controls.validaEstadoEspacios.hasError('min')">
+                    El Estado de Espacios es requerido
+                  </span>
+                </mat-hint>
+              </mat-form-field>
+
+
+
+
+            </div>
+
+
+          </form>
+        </div>
+
+
+        <!-- Botón para enviar el formulario -->
+        <div style="margin-top: 15px; text-align: right;">
+          <button class="reg_boton" mat-raised-button type="submit" [disabled]="formsRegistra.invalid"
+            (click)="registra()" color="primary">Registra</button>
+        </div>
+
+
+      
+
+      <!-----------------------------------------LEYENDA-->
+      <!--
+          
+  dd
+  
+  dd-->
+      <div class="leyenda">
+        <p><span class="color-circle" style="background-color: #2BA555;"></span> <span>Gerencia</span></p>
+        <p><span class="color-circle" style="background-color: grey;"></span> <span>General</span></p>
+        <p><span class="color-circle" style="background-color: #15395A;"></span> <span>Discapacitado</span></p>
+      </div>
+
+      <!-----------------------------------------LEYENDA DISPONIBLE/NO DISPONIBLE-->
+
+
+
+      <div class="leyenda">
+        <!-- Leyenda de Disponible -->
+        <p>
+          <span class="color-circle" style="background-color: #2BA555;"></span>
+          <span class="color-circle" style="background-color: grey;"></span>
+          <span class="color-circle" style="background-color: #15395A;"></span>
+          <span>Disponible</span>
+        </p>
+
+        <!-- Leyenda de No Disponible/Inactivo -->
+        <p>
+          <span class="color-circle" style="background-color: #2BA555; opacity: 0.5;"></span>
+          <span class="color-circle" style="background-color: grey; opacity: 0.5;"></span>
+          <span class="color-circle" style="background-color: #15395A; opacity: 0.5;"></span>
+          <span>No Disponible/Inactivo</span>
+        </p>
+      </div>
+
+
+
+      <!-- -------------------------LISTADO--- Tabla de listado con filtro -->
+
+      <div class="parqueos-list">
+        <!-- Iteramos sobre las ubicaciones -->
+        <div *ngFor="let ubicacion of lstUbicaciones" class="ubicacion-group">
+          <div class="ubicacion-header">
+            <h3 (click)="openUpdateDialog(ubicacion)">{{ ubicacion.nombreUbicacion }} </h3>
+          </div>
+
+          <!-- Asegúrate de que idUbicacion no sea undefined antes de acceder al objeto -->
+          <div class="bloques_cont" *ngIf="ubicacion.idUbicacion !== undefined">
+            <div *ngFor="let parqueo of parqueosPorUbicacion[ubicacion.idUbicacion]" class="parqueo-card">
+              <button style="cursor: default;" mat-raised-button [ngStyle]="{
+                                    'background-color': getColor(parqueo.tipoParqueo?.nombreTipoParqueo ?? 'defaultColor'),
+                                    'color': 'white'
+                                  }">
+                {{ parqueo.idParqueos }}
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <!-- ------------------------------Fin listado -->
+
+
+
+
+
+
+      <!-- ------------------------------Fin listado -->
+
+    </div>
+  </div>
+</div>
+</body>
